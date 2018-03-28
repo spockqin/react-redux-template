@@ -1,18 +1,20 @@
 var webpack = require('webpack');
 var path = require('path');
 
-console.log(path.join(__dirname, '/index.js'));
-
 module.exports = {
 	entry: [
-		path.join(__dirname, '/index.js')
+		path.join(__dirname, '/src/js/index.js')
 	],
 	module: {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
-					exclude: /node_modules/,
-					loader: 'babel-loader'
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+				query: {
+					presets: ['react', "es2015", "stage-0"],
+					plugins: ['transform-decorators-legacy']
+				}
 			},
 			{
 				test: /\.less$/,
